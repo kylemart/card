@@ -4,73 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>Merry X-Mas & Happy New Year!</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding-bottom: env(safe-area-inset-bottom); /* Ensures content doesn't get blocked */
-            background-color: #000;
-            color: white;
-            font-family: monospace;
-            overflow-x: hidden;
-            margin: 0;
-        }
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding-bottom: env(safe-area-inset-bottom); /* Ensures content doesn't get blocked */
+        background-color: #000;
+        color: white;
+        font-family: monospace;
+        overflow-x: hidden;
+        margin: 0;
+    }
+    pre {
+        font-size: 16px;
+        line-height: 1.2;
+        text-align: left;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        max-width: 90%;
+        margin-top: 0; /* Remove top margin to bring tree higher */
+    }
+    .message {
+        margin-top: 10px; /* Reduced margin */
+        text-align: center;
+        font-size: 16px;
+        color: white;
+        word-wrap: break-word;
+        white-space: normal;
+        max-width: 90%;
+        overflow-wrap: break-word;
+    }
+    .typing-effect {
+        margin-top: 10px; /* Reduced margin */
+        font-size: 14px;
+        color: white;
+        text-align: center;
+        white-space: normal;
+        word-wrap: break-word;
+        max-width: 90%;
+        overflow-wrap: break-word;
+    }
+
+    @media (max-width: 600px) {
         pre {
-            font-size: 16px;
-            line-height: 1.2;
-            text-align: left;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            max-width: 90%;
+            font-size: 4vw;
         }
         .message {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 16px;
-            color: white;
-            word-wrap: break-word;
-            white-space: normal;
-            max-width: 90%;
-            overflow-wrap: break-word;
+            font-size: 5vw;
         }
         .typing-effect {
-            margin-top: 30px;
-            font-size: 14px;
-            color: white;
-            text-align: center;
-            white-space: normal;
-            word-wrap: break-word;
-            max-width: 90%;
-            overflow-wrap: break-word;
+            font-size: 4vw;
         }
-        
-        @media (max-width: 600px) {
-            pre {
-                font-size: 4vw;
-            }
-            .message {
-                font-size: 5vw;
-            }
-            .typing-effect {
-                font-size: 4vw;
-            }
-        }
+    }
 
-        @media (max-width: 400px) {
-            pre {
-                font-size: 6vw;
-            }
-            .message {
-                font-size: 6vw;
-            }
-            .typing-effect {
-                font-size: 5vw;
-            }
+    @media (max-width: 400px) {
+        pre {
+            font-size: 6vw;
         }
-    </style>
+        .message {
+            font-size: 6vw;
+        }
+        .typing-effect {
+            font-size: 5vw;
+        }
+    }
+</style>
 </head>
 <body>
     <pre id="tree"></pre>
