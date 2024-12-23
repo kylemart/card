@@ -21,7 +21,7 @@
     pre {
         font-size: 16px;
         line-height: 1.2;
-        text-align: left;
+        text-align: center;
         white-space: pre-wrap;
         word-wrap: break-word;
         max-width: 90%;
@@ -86,19 +86,18 @@
         const treeElement = document.getElementById('tree');
         const typingElement = document.getElementById('typing-message');
 
-        const star = `<span style="color: yellow;">       *</span>`;
-        const tree = `      
-      ***
-     *****
-    *******
-   *********
-  ***********
- *************
-      |||
-      |||`;
+        const tree = `✸
+***
+*****
+******
+*********
+***********
+*************
+|||
+|||`;
 
         const colors = [
-            'red', 'green', 'yellow', 'blue', 'cyan', 'magenta', 'white'
+            'red', 'green', 'blue', 'cyan', 'magenta', 'white'
         ];
 
         const messages = [
@@ -120,12 +119,14 @@
                         return `<span style="color: ${getRandomColor()};">${char}</span>`;
                     } else if (char === '|') {
                         return `<span style="color: brown;">${char}</span>`;
+                    } else if (char === '✸') {
+		 	return `<span style="color: yellow;">${char}</span>`;
                     }
                     return char === ' ' ? '&nbsp;' : char;
                 }).join('');
             }).join('<br>');
 
-            treeElement.innerHTML = star + colorfulTree;
+            treeElement.innerHTML = colorfulTree;
         }
 
         let currentMessageIndex = 0;
