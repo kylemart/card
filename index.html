@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry X-Mas!</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+            color: white;
+            font-family: monospace;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        pre {
+            font-size: 30px;
+            line-height: 1.2;
+            text-align: left;
+            white-space: pre;
+        }
+        .message {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 30px;
+            color: white;
+        }
+        .typing-effect {
+            margin-top: 30px;
+            font-size: 28px;
+            color: white;
+            text-align: center;
+            border-right: 2px solid white;
+            padding-right: 5px;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <pre id="tree"></pre>
+    <div class="message">
+        <p>Merry X-Mas!</p>
+        <p>- From the NRT team</p>
+    </div>
+
+    <div class="typing-effect" id="typing-message"></div>
+
+    <script>
+        const treeElement = document.getElementById('tree');
+        const typingElement = document.getElementById('typing-message');
+
+        const star = `<span style="color: yellow;">       *</span>`;
+        const tree = `      
+      ***
+     *****
+    ******
+   *********
+  ***********
+ *************
+      |||
+      |||`;
+
+        const colors = [
+            'red', 'green', 'yellow', 'blue', 'cyan', 'magenta', 'white'
+        ];
+
+        const messages = [
+            'K.M. said: "Thank you for everything that you do! Looking forward to 2025!"',
+            'C.R. said: "[...]"',
+            'L.H. said: "[...]"',
+            'S.C. said: "[...]"'
+        ];
+
+        function getRandomColor() {
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        function updateTree() {
+            const lines = tree.split('\n');
+            const colorfulTree = lines.map(line => {
+                return Array.from(line).map(char => {
+                    if (char === '*') {
+                        return `<span style="color: ${getRandomColor()};">${char}</span>`;
+                    } else if (char === '|') {
+                        return `<span style="color: brown;">${char}</span>`;
+                    }
+                    return char === ' ' ? '&nbsp;' : char;
+                }).join('');
+            }).join('<br>');
+
+            treeElement.innerHTML = star + colorfulTree;
+        }
+
+        let currentMessageIndex = 0;
+        let currentText = '';
+        let isTyping = true;
+
+        function typeMessage() {
+            const currentMessage = messages[currentMessageIndex];
+            if (isTyping) {
+                currentText += currentMessage.charAt(currentText.length);
+                typingElement.textContent = currentText;
+                if (currentText.length === currentMessage.length) {
+                    isTyping = false;
+                    setTimeout(() => deleteMessage(), 2000);
+                }
+            }
+        }
+
+        function deleteMessage() {
+            const currentMessage = messages[currentMessageIndex];
+            currentText = currentText.slice(0, -1);
+            typingElement.textContent = currentText;
+            if (currentText.length === 0) {
+                isTyping = true;
+                currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+                setTimeout(() => typeMessage(), 300);
+            } else {
+                setTimeout(() => deleteMessage(), 40);
+            }
+        }
+
+        setInterval(updateTree, 500);
+        setInterval(typeMessage, 100);
+        updateTree();
+    </script>
+</body>
+</html>
