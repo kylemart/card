@@ -21,9 +21,8 @@
     pre {
         font-size: 16px;
         line-height: 1.2;
-        text-align: center;
+        text-align: left;
         white-space: pre-wrap;
-        word-wrap: break-word;
         max-width: 90%;
         margin-top: 0; /* Remove top margin to bring tree higher */
     }
@@ -86,15 +85,15 @@
         const treeElement = document.getElementById('tree');
         const typingElement = document.getElementById('typing-message');
 
-        const tree = `✸
-***
-*****
-******
-*********
-***********
+        const tree = `      ⋆
+     ***
+    *****
+   *******
+  *********
+ ***********
 *************
-|||
-|||`;
+     |||
+     |||`;
 
         const colors = [
             'red', 'green', 'blue', 'cyan', 'magenta', 'white'
@@ -119,7 +118,7 @@
                         return `<span style="color: ${getRandomColor()};">${char}</span>`;
                     } else if (char === '|') {
                         return `<span style="color: brown;">${char}</span>`;
-                    } else if (char === '✸') {
+                    } else if (char === '⋆') {
 		 	return `<span style="color: yellow;">${char}</span>`;
                     }
                     return char === ' ' ? '&nbsp;' : char;
