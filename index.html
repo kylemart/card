@@ -16,30 +16,52 @@
             font-family: monospace;
             flex-direction: column;
             overflow: hidden;
+            padding: 20px;
+            padding-bottom: 50px;
+            box-sizing: border-box;
         }
         pre {
-            font-size: 30px;
+            font-size: 20px;
             line-height: 1.2;
             text-align: left;
-            white-space: pre;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-width: 90%;
         }
         .message {
             margin-top: 20px;
             text-align: center;
-            font-size: 30px;
+            font-size: 18px;
             color: white;
+            word-wrap: break-word;
+            white-space: normal;
+            max-width: 90%;
+            overflow-wrap: break-word;
         }
         .typing-effect {
             margin-top: 30px;
-            font-size: 28px;
+            font-size: 16px;
             color: white;
             text-align: center;
-            border-right: 2px solid white;
-            padding-right: 5px;
-            white-space: nowrap;
+            white-space: normal;
+            word-wrap: break-word;
+            max-width: 90%;
+            overflow-wrap: break-word;
         }
         
         @media (max-width: 600px) {
+            pre {
+                font-size: 6vw;
+            }
+            .message {
+                font-size: 5vw;
+            }
+            .typing-effect {
+                font-size: 4vw;
+            }
+        }
+
+        @media (max-width: 400px) {
             pre {
                 font-size: 8vw;
             }
@@ -50,24 +72,12 @@
                 font-size: 5vw;
             }
         }
-
-        @media (max-width: 400px) {
-            pre {
-                font-size: 10vw;
-            }
-            .message {
-                font-size: 7vw;
-            }
-            .typing-effect {
-                font-size: 6vw;
-            }
-        }
     </style>
 </head>
 <body>
     <pre id="tree"></pre>
     <div class="message">
-        <p>Merry X-Mas & Happy Near Year!</p>
+        <p>Merry X-Mas & Happy New Year!</p>
         <p>- From the NRT team</p>
     </div>
 
@@ -96,7 +106,7 @@
             'K.M. said: "Thank you for everything that you do! Looking forward to 2025!"',
             'C.R. said: "May the new year be full of success and prosperity. Happy New Year!!!"',
             'L.H. said: "Happy new year to the best manager! XP"',
-            'S.C. said: "[...]"'
+            'S.C. said: "[...]'
         ];
 
         function getRandomColor() {
